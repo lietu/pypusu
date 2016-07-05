@@ -51,3 +51,14 @@ pip install ws4py wsaccel
 Short version: MIT + New BSD.
 
 Long version: Read the LICENSE.md -file.
+
+
+## Uploading to PyPi
+
+You can't really do that without the appropriate username + password information,
+but I'm saving this here because I'll just forget.
+
+```
+python setup.py sdist upload -r pypitest
+python setup.py sdist upload -r pypi
+```
