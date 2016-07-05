@@ -1,6 +1,7 @@
 import json
 from ws4py.client.threadedclient import WebSocketClient
 from .base import _PuSuBaseClient
+from .errors import PyPuSuConnectionError
 
 # Auto-patch ws4py with wsaccel if that's available
 try:
@@ -96,7 +97,11 @@ class PuSuClient(_PuSuBaseClient):
     def _send(self, data):
         if DEBUG:
             print("-> {}".format(data))
-        self._client.send(data)
+        try:
+            self._client.send(data)
+        except AttributeError:
+            # ws4py throws AttributeErrors when the server disconnects ..
+            raise PyPuSuConnectionError("Looks like we're disconnected")
 
     def _received_message(self, data):
         if DEBUG:

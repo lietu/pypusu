@@ -27,6 +27,24 @@ if __name__ == "__main__":
     print(count)
 ```
 
+## Dependencies
+
+Not quite sure how to deal with dependencies yet, so for now you'll have to 
+install them separately.
+
+For the threaded client you'll need the following in your `requirements.txt`:
+
+```
+ws4py==0.3.5
+wsaccel==0.6.2
+```
+
+Or you can try:
+
+```
+pip install ws4py wsaccel
+```
+
 
 ## License
 
