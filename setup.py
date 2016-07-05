@@ -8,7 +8,7 @@ setup(
     author='Janne Enberg',
     author_email='janne.enberg@lietu.net',
     url='https://github.com/PuSuEngine/pypusu',
-    download_url='https://github.com/PuSuEngine/pypusu/tarball/v1.0.0',
+    download_url='https://github.com/PuSuEngine/pypusu/tarball/v1.0.1',
     keywords=['pubsub', 'publisher', 'subscriber', 'messaging'],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
