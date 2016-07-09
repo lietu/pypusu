@@ -1,4 +1,4 @@
-from pypusu.threaded import PuSuClient
+from pypusu.polling import PuSuClient
 from time import sleep, time
 
 if __name__ == "__main__":
@@ -7,11 +7,9 @@ if __name__ == "__main__":
 
     count = 0
 
-
     def listener(msg):
         global count
         count += 1
-
 
     print("Authorizing")
     c.authorize("foo")
@@ -33,6 +31,13 @@ if __name__ == "__main__":
         target / elapsed
     ))
 
-    sleep(60)
+    sleep(1)
+    print("So far got {} messages, polling...".format(count))
+    c.poll()
+    print("After poll got {} messages, waiting for more...".format(count))
+
+    for i in range(0, 60):
+        sleep(1)
+        c.poll()
 
     print("Got {} messages".format(count))

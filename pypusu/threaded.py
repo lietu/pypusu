@@ -52,7 +52,7 @@ class PuSuClient(_PuSuBaseClient):
     but doesn't depend on anything else.
 
     .. code-block:: python
-        from pypusy import PuSuClient
+        from pypusy.threaded import PuSuClient
 
         client = PuSuClient("ws://127.0.0.1:55000")
 
