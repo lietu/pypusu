@@ -1,5 +1,8 @@
 import json
-from Queue import Queue, Empty
+try:
+    from Queue import Queue, Empty  # Python 2
+except ImportError:
+    from queue import Queue, Empty  # Python 3
 
 DEBUG = False
 
