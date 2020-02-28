@@ -1,8 +1,4 @@
-from __future__ import division
-from __future__ import print_function
-from builtins import range
-from past.utils import old_div
-from pypusu.polling import PuSuClient
+from pypusu.threaded import PuSuClient
 from time import sleep, time
 
 if __name__ == "__main__":
@@ -11,9 +7,11 @@ if __name__ == "__main__":
 
     count = 0
 
+
     def listener(msg):
         global count
         count += 1
+
 
     print("Authorizing")
     c.authorize("foo")
@@ -32,16 +30,9 @@ if __name__ == "__main__":
     print("Sent {} messages in {:.3f}s, {:.2f}msg/s".format(
         target,
         elapsed,
-        old_div(target, elapsed)
+        target / elapsed
     ))
 
-    sleep(1)
-    print("So far got {} messages, polling...".format(count))
-    c.poll()
-    print("After poll got {} messages, waiting for more...".format(count))
-
-    for i in range(0, 60):
-        sleep(1)
-        c.poll()
+    sleep(60)
 
     print("Got {} messages".format(count))
